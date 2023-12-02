@@ -1,0 +1,377 @@
+@font-face {
+    font-family: PokemonSolido;
+    src: url(fonts/Pokemon\ Solid.ttf);
+}
+
+@font-face {
+    font-family: PokemonContorno;
+    src: url(fonts/Pokemon\ Hollow.ttf);
+}
+
+@font-face {
+    font-family: PokemonTexto;
+    src: url('fonts/Pokemon Classic.ttf');
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: PokemonTexto;
+}
+
+body{
+    background: url("https://assets.pokemon.com/static2/_ui/img/chrome/body_bg.png");
+    /* display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; */
+    flex-wrap: wrap;
+}
+
+header, section{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 65vw;
+    padding: 0 !important;
+
+}
+
+header{
+    display: flex;
+    background-color: #313131;
+}
+
+.bkg-sub-container{
+    background: #ffffff url("https://assets.pokemon.com/static2/_ui/img/chrome/container_bg.png");
+    width: 100%;
+    color: #919191;
+    display: flex;
+    justify-content: center;
+    z-index: 0;
+}
+
+.white-sub-container{
+    width: 80%;
+    background-color: white;
+    padding: 2em 0;
+}
+
+.white-sub-container h1{
+    /* margin-left: 20px; */
+    font-size: 1em;
+
+}
+
+.search-bar-container{
+    width: 100%;
+    font-size: .6em;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+}
+
+.black-sub-container{
+    width: 80%;
+    padding: 4em 0;
+}
+
+.search-bar-container .black-sub-container{
+    display: flex;
+    align-items: center;
+}
+
+.left-side h2{
+    font-size: 2em;
+    margin-bottom: 1em;
+}
+
+.search-container{
+    display: flex;
+    align-items: center;
+}
+
+.search-container input{
+    width: 20em;
+    height: 2.5em;
+    padding-left: .3em;
+    font-size: 1.7em;
+}
+
+.search-container button{
+    width: 2.5em;
+    height: 2.5em;
+    border-radius: .2em;
+    border: none;
+    margin-left: .5em;
+    background-color: #ee6b2f;
+    font-size: 1.7em;
+}
+.right-side .text-container{
+    background-color: #4dad5b;
+    font-size: 1.5em;
+    padding: 1em;
+    border-radius: .5em;
+}
+
+section{
+    color: #919191;
+}
+
+.organiza-container, .pokemons-results-container{
+    margin-left: 20px;
+}
+
+.dropDown-button{
+    background-color: #313131;
+    display: flex;
+    align-items: center;
+    color:white;
+    padding: .5em;
+    border-radius: .4em;
+    cursor: pointer;
+    user-select: none;
+}
+
+.dropDown-button img{
+    width: 2em;
+    filter: invert(100%);
+}
+
+.dropDown-button .closed{
+    width: 1.4em;
+    rotate: 90deg;
+    transition: all 0.3s ease-in-out;
+}
+
+.dropDown-button .opened{
+    width: 1.4em;
+    rotate: -90deg;
+    transition: all 0.3s ease-in-out;
+}
+
+.dropDown-button p{
+    font-size: .8em;
+    margin: 0 1em;
+}
+
+
+.dropDown-menu{
+    position:absolute;
+    color:#ffffff;
+    background-color: #616161;
+    display: none;
+    margin-top: 3em;
+    cursor: pointer;
+    user-select: none;
+}
+
+.dropDown-menu ul{
+    padding: 0 !important;
+    list-style: none;
+}
+
+.dropDown-menu ul li:hover{
+    background-color: #333333;
+}
+
+.dropDown-menu ul li{
+    padding: 1em .5em;
+    font-size: .8em;
+    width: 100%;
+    transition: all 0.3s ease-in-out;
+}
+
+#organizar-sub-container{
+    width: 100%;
+}
+
+@media (max-width: 992px) {
+    #text-container-dropDown {
+      display: flex !important;
+      justify-content: start !important;
+    }
+
+}
+
+.img-pokemon{
+    background-color: #ebebeb;
+    border-radius: .5em;
+}
+
+.id-pokemon{
+    margin-top: 1em;
+    font-size: .8em;
+}
+
+.name-pokemon{
+    color: black;
+    margin-bottom: 0;
+    font-size: 1em;
+}
+/* 
+.pokemon-type{
+    display: flex;
+    align-items: center;
+} */
+
+.pokemon-type div{
+    margin-right: .2em;
+    border-radius: .2em;
+    padding: .2em .8em;
+}
+
+.pokemon-type :first-child{
+    margin-bottom: 0;
+}
+
+.pokemon-type p::first-letter, .name-pokemon::first-letter{
+    text-transform: uppercase;
+}
+
+/* types */
+
+.fairy-type p, .ground-type p, .electric-type p, .flying-type p, .grass-type p, .ice-type p{
+    color: black;
+}
+
+.grass-type{
+    background-color: #9bcc50;
+}
+
+.poison-type{
+    background-color: #cc50c2;
+}
+
+.normal-type{
+    background-color: #a4acaf;
+}
+
+.fighting-type{
+    background-color: #d56723;
+}
+
+.fire-type{
+    background-color: #fd7d24;
+}
+.flying-type{
+    background: linear-gradient(to bottom, #3dc7ef 50%, #bdb9b8 50%);
+}
+.water-type{
+    background-color: #4592c4;
+}
+.ground-type{
+    background: linear-gradient(to bottom, #f7de3f 50%, #ab9842 50%);
+}
+.rock-type{
+    background-color: #a38c21;
+}
+.bug-type{
+    background-color: #729f3f;
+}
+.ghost-type{
+    background-color: #7b62a3;
+}
+.steel-type{
+    background-color: #9eb7b8;
+}
+.electric-type{
+    background-color: #eed535;
+}
+.psychic-type{
+    background-color: #f366b9;
+}
+.ice-type{
+    background-color: #51c4e7;
+}
+.dragon-type{
+    background: linear-gradient(to bottom, #53a4cf 50%, #f16e57 50%);
+}
+.dark-type{
+    background-color: #707070;
+}
+.fairy-type{
+    background-color: #fdb9e9;
+}
+
+.type-text{
+    margin: 0;
+    font-size: .7em;
+    color: white;
+}
+
+.pokemon-type :last-child{
+    margin: 0;
+}
+
+.pokemon-card{
+    transition: all 0.3s ease-in-out;
+}
+
+.pokemon-card:hover{
+    transform: scale(1.02);
+}
+
+@media (max-width: 1400px){
+    .pokemon-type :first-child{
+        margin-bottom: 0;
+}
+    .type-text{
+        font-size: .5em;
+    }
+}
+
+@media (max-width: 1200px){
+    .pokemon-type div{
+        margin-right: 0;
+    }
+    .pokemon-type :first-child{
+        margin-bottom: .2em;
+    }
+    
+
+    .type-text{
+        font-size: .6em;
+    }
+}
+
+
+@media(max-width: 992px){
+    
+    .name-pokemon, .id-pokemon, .type-text{
+        font-size: .7em;
+    }
+
+}
+
+@media(max-width: 768px){
+    .name-pokemon{
+        font-size: 1em;
+    }
+    .type-text{
+        font-size: .7em;
+    }
+}
+
+@media (max-width: 576px) {
+    .pokemon-type :first-child{
+        margin-bottom: 0;
+        margin-right: .2em;
+    }
+    #search-bar-input{
+        width: 90%;
+    }
+
+    .text-container p, .left-side-dropDown{
+        font-size: 80%
+    }
+}
+
+@media (max-width: 318px){
+    .pokemon-type :first-child{
+        width: 100%;
+        margin-bottom: .2em;
+    }
+}

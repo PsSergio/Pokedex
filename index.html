@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokedéx - Paulo Sergio 1AI</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+</head>
+<body>
+    <header class="container">
+        <div class="bkg-sub-container">
+            <div class="white-sub-container ">
+                <h1 class="container">Pokedéx - Paulo Sergio</h1>
+            </div>
+        </div>
+        <div class="search-bar-container">
+            <div class="black-sub-container row">
+                <div class="left-side col-xl-6 mb-3">
+                    <h2>Nome ou número</h2>
+                    <div class="search-container">
+                        <input type="text" id="search-bar-input">
+                        <button id="search-bar-button" onclick="searchPokemon()"><img src="https://assets.pokemon.com/static2/_ui/img/chrome/forms/input-search-bg.png" alt=""></button>
+                    </div>
+                </div>
+                <div class="right-side col-xl-6">
+                    <div class="text-container">
+                        <p>Realize a busca por Pokémon pelo nome ou usando o número do Pokédex Nacional.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <section class="container">
+        <div class="bkg-sub-container">
+            <div class="white-sub-container d-flex row align-items-center justify-content-center">
+                <div class="organiza-container d-flex align-items-center justify-content-end container">
+                    <div class="row d-flex align-items-center justify-content-end" id="organizar-sub-container">
+                        <div class="mb-2 col-lg d-flex justify-content-end" id="text-container-dropDown">
+                            <p class="mb-0">Organizar por</p>
+                        </div>
+                        <div class="dropDown-container d-flex col-lg flex-column" >
+                            <!--  -->
+                            <div class="dropDown-button d-flex justify-content-between" onclick="openDropDown()">
+                                <div class="left-side-dropDown d-flex align-items-center">
+                                    <img src="https://icons-for-free.com/iconfiles/png/512/pokemon+pokemongo+icon-1320190500519737353.png" alt="">
+                                    <p class="dropDown-text-content">Menor número primeiro</p>
+                                </div>
+                                <div class="right-side-dropDrown">
+                                    <img src="https://cdn-icons-png.flaticon.com/512/32/32213.png" alt="" class="closed" id="arrow-dropDown">
+                                </div>
+                            </div>
+                            <!--  -->
+                            <div class="dropDown-menu">
+                                <ul class="mb-0"> 
+                                    <li class="opOrganization">Menor número primeiro</li>
+                                    <li class="opOrganization">Maior número primeiro</li>
+                                    <li class="opOrganization">A-Z</li>
+                                    <li class="opOrganization">Z-A</li>
+                                </ul>
+                            </div>
+                            <!--  -->
+                        </div>
+                    </div>
+                </div>
+                <div class="pokemons-results-container container mt-5 row row-cols-auto">
+                    <!-- <div class="pokemon-card col-lg-3 mb-3 col-sm-6 col-md-4">
+                        <div class="img-pokemon">
+                            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png" alt="" class="img-fluid">
+                        </div>
+                        <div class="desc-pokemon">
+                            <p class="id-pokemon">Nº 0001</p>
+                            <p class="name-pokemon">Bulbasaur</p>
+                            <div class="pokemon-type mt-2 row d-flex container">
+                                <div class="grass-type col">
+                                    <p class="type-text text-center">Grass</p>
+                                </div>
+                                <div class="poison-type col">
+                                    <p class="type-text text-center">Poison</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="js/script.js"></script>
+</body>
+</html>

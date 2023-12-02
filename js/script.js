@@ -1,6 +1,25 @@
 let totalCarregar = 12
 let totalPokemons = 1000
 
+let numOrganization = 0;
+
+function loadPokemon(){
+    if(document.getElementById("load-btn").textContent == "Voltar à Busca"){
+        totalCarregar = 12
+        deletePokemons()
+        document.getElementById("load-btn").innerHTML = "Carregar mais Pokémon"
+        ordemCrescente(1, totalCarregar)
+        return
+    }
+    let totalAntes = totalCarregar+1
+    totalCarregar+=12;
+    if(numOrganization == 0){
+        ordemCrescente(totalAntes, totalCarregar)
+    }else if(numOrganization == 1){
+        ordemDecrescente(totalPokemons-totalAntes+1, totalCarregar)
+    }
+}
+
 function openDropDown(){
 
     const DropDownContainer = document.getElementsByClassName("dropDown-menu")[0]
@@ -30,7 +49,7 @@ function openDropDown(){
 
 const opOrganization = document.getElementsByClassName("opOrganization")
 
-for(let i = 0; i < 4; i++){
+for(let i = 0; i < opOrganization.length; i++){
     opOrganization[i].addEventListener('click', changeOrganizationPokemons)
 }
 
@@ -40,10 +59,13 @@ function changeOrganizationPokemons(event){
 
     // organization logic
     deletePokemons()
+    totalCarregar = 12
     if(event.target == opOrganization[0]){
-        ordemCrescente(totalCarregar)
+        ordemCrescente(1, totalCarregar)
+        numOrganization = 0
     }else if(event.target == opOrganization[1]){
         ordemDecrescente(totalPokemons, totalCarregar)
+        numOrganization = 1
     }else if(event.target == opOrganization[2]){
 
     }else if(event.target == opOrganization[3]){
@@ -53,14 +75,14 @@ function changeOrganizationPokemons(event){
 
 const POKEMON_BASE_URL = "https://pokeapi.co/api/v2/pokemon/"
 
-async function ordemCrescente(j){
-    for(let i = 1; i <= j; i++){
+async function ordemCrescente(inicio, fim){
+    for(let i = inicio; i <= fim; i++){
         const result = await getAPI(i)
     }
 }
 
-async function ordemDecrescente(){
-    for(let i = totalPokemons; i > totalPokemons-totalCarregar; i--){
+async function ordemDecrescente(inicio, fim){
+    for(let i = inicio; i > totalPokemons-fim; i--){
         // deletePokemons(i)
         const result = await getAPI(i)
     }
@@ -174,18 +196,9 @@ async function searchPokemon(){
     let input = document.getElementById("search-bar-input")
     if(!isNaN(input.value)){
         const result = await getAPI(input.value) 
+        document.getElementById("load-btn").innerHTML = "Voltar à Busca"
         return
-    }
-
-    // const resultSearch = listaPokemonsName.filter((name) =>{
-    //     name.toLowerCase().includes(input.value.toLowerCase())
-    // })
-    // console.log(listaPokemonsName)
-    // for(let i = 0; i < resultSearch; i++){
-    //     // const result = await getAPI(i) 
-    // }
-
-
+    }   
 }
 
-ordemCrescente(totalCarregar)
+ordemCrescente(1, totalCarregar)

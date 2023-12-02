@@ -314,6 +314,15 @@ section{
     transform: scale(1.02);
 }
 
+#load-btn{
+    font-size: .8em;
+    background-color: #30a7d7;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    padding: 1em 2em;
+}
+
 @media (max-width: 1400px){
     .pokemon-type :first-child{
         margin-bottom: 0;

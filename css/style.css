@@ -166,6 +166,7 @@ section{
     margin-top: 3em;
     cursor: pointer;
     user-select: none;
+    z-index: 888;
 }
 
 .dropDown-menu ul{
@@ -321,6 +322,78 @@ section{
     border-radius: 10px;
     color: white;
     padding: 1em 2em;
+}
+
+.bkg-modal-pokemon{
+    position: absolute;
+    background-color: #00000063;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+}
+
+.modal-container{
+    background-color: white;
+    width: 80% !important;
+    margin-top: 3em;
+    padding: 2em 0;
+}
+
+.pokemon-name-modal{
+    color: black;
+}
+
+.stats-title{
+    color: black;
+    font-size: .8em;
+}
+
+.stats-ilustration-modal{
+    background-color: #b4b4b4;
+    width: 100%;
+    margin-top: 2em;
+    padding: 1em 2em;
+    border-radius: 8px;
+}
+
+.row-stats{
+    background-color: white;
+    width: 60px;
+    height: 10px;
+    margin-bottom: .3em;
+}
+
+.stats-container{
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    padding: 0 !important;
+}
+
+.stats-desc{
+    font-size: .5em;
+    text-align: center;
+    color: black;
+}
+
+.info-pokemon-modal{
+    background-color: #30a7d7;
+    padding: .05em 1em;
+    border-radius: 10px;
+}
+
+.info-pokemon-modal div{
+    margin: 1em 0;
+}
+
+.info-pokemon-modal p{
+    color: white;
+    margin: 0 !important;
+}
+
+.response{
+    color: black !important;
+    font-size: .8em;
 }
 
 @media (max-width: 1400px){

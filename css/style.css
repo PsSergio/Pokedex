@@ -197,7 +197,7 @@ section{
 
 }
 
-.img-pokemon{
+.img-pokemon, .pokemon-ilustration-modal{
     background-color: #ebebeb;
     border-radius: .5em;
 }
@@ -228,7 +228,7 @@ section{
     margin-bottom: 0;
 }
 
-.pokemon-type p::first-letter, .name-pokemon::first-letter{
+.pokemon-type p::first-letter, .name-pokemon::first-letter, .type-text::first-letter{
     text-transform: uppercase;
 }
 
@@ -335,8 +335,9 @@ section{
 .modal-container{
     background-color: white;
     width: 80% !important;
-    margin-top: 3em;
     padding: 2em 0;
+    height: 80%;
+    overflow-y: scroll;
 }
 
 .pokemon-name-modal{
@@ -394,6 +395,28 @@ section{
 .response{
     color: black !important;
     font-size: .8em;
+}
+
+.types-container div{
+    margin-left: .8em;
+    padding: .4em;
+    border-radius: 5px;
+}
+
+.types-container div p{
+    text-align: center;
+}
+
+.type-title{
+    color: black;
+}
+
+.mid-modal{
+    margin-bottom: 2em;
+}
+
+.mid-modal p{
+    font-size: 1.5em;
 }
 
 @media (max-width: 1400px){

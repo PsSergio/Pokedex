@@ -125,6 +125,7 @@ function showPokemons(name, id, img, type1, type2){
     DivContainer.classList.add("mb-3")
     DivContainer.classList.add("col-sm-6")
     DivContainer.classList.add("col-md-4")
+    DivContainer.id = id
     document.getElementsByClassName("pokemons-results-container")[0].appendChild(DivContainer)
     
     // 

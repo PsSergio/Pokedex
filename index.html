@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
 </head>
-<body>
+<body onload="ordemCrescente(1, totalCarregar)">
     <header class="container">
         <div class="bkg-sub-container">
             <div class="white-sub-container ">
@@ -85,9 +85,9 @@
                 </div>
             </div>
         </div>
-        <div class="bkg-modal-pokemon d-flex flex-column justify-content-center">
+        <div class="bkg-modal-pokemon d-none flex-column justify-content-center">
             <div class="modal-container container d-flex flex-column align-items-center">
-                <div class="close-icon-container">
+                <div class="close-icon-container" onclick="closeModal(document.getElementsByClassName('bkg-modal-pokemon')[0])">
                     <img src="img/close-icon.png" alt="">
                 </div>
                 <div class="sub-container-modal container row">
@@ -97,7 +97,7 @@
                     </div>
                     <div class="left-side-modal col-lg-6 col-12">
                         <div class="pokemon-ilustration-modal d-flex flex-column align-items-center justify-content-center">
-                            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/2.png" alt="">
+                            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/2.png" class="img-modal">
                         </div>
                         <div class="stats-ilustration-modal d-flex flex-column justify-content-start mb-4">
                             <p class="stats-title">Status</p>
@@ -231,8 +231,8 @@
                         <div class="type-pokemons-modal">
                             <p class="type-title">Tipos</p>
                             <div class="types-container row">
-                                <div class="grass-type col-3"><p class="type-text ">grass</p></div>
-                                <div class="poison-type col-3"><p class="type-text ">poison</p></div>
+                                <p class="col-sm-3 col-5 text-center type-text type1">grass</p>
+                                <p class="col-sm-3 col-5 text-center type-text type2">poison</p>
                             </div>
                         
                         </div>

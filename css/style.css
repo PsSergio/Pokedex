@@ -27,6 +27,7 @@ body{
     justify-content: center;
     align-items: center; */
     flex-wrap: wrap;
+    overflow-x: hidden;
 }
 
 header, section{
@@ -228,72 +229,72 @@ section{
     margin-bottom: 0;
 }
 
-.pokemon-type p::first-letter, .name-pokemon::first-letter, .type-text::first-letter{
+.pokemon-type p::first-letter, .name-pokemon::first-letter, .type-text::first-letter, .pokemon-name-modal::first-letter, .ability-response::first-letter{
     text-transform: uppercase;
 }
 
 /* types */
 
-.fairy-type p, .ground-type p, .electric-type p, .flying-type p, .grass-type p, .ice-type p{
+#fairy-type p, #ground-type p, #electric-type p, #flying-type p, #grass-type p, #ice-type p{
     color: black;
 }
 
-.grass-type{
+#grass-type{
     background-color: #9bcc50;
 }
 
-.poison-type{
+#poison-type{
     background-color: #cc50c2;
 }
 
-.normal-type{
+#normal-type{
     background-color: #a4acaf;
 }
 
-.fighting-type{
+#fighting-type{
     background-color: #d56723;
 }
 
-.fire-type{
+#fire-type{
     background-color: #fd7d24;
 }
-.flying-type{
+#flying-type{
     background: linear-gradient(to bottom, #3dc7ef 50%, #bdb9b8 50%);
 }
-.water-type{
+#water-type{
     background-color: #4592c4;
 }
-.ground-type{
+#ground-type{
     background: linear-gradient(to bottom, #f7de3f 50%, #ab9842 50%);
 }
-.rock-type{
+#rock-type{
     background-color: #a38c21;
 }
-.bug-type{
+#bug-type{
     background-color: #729f3f;
 }
-.ghost-type{
+#ghost-type{
     background-color: #7b62a3;
 }
-.steel-type{
+#steel-type{
     background-color: #9eb7b8;
 }
-.electric-type{
+#electric-type{
     background-color: #eed535;
 }
-.psychic-type{
+#psychic-type{
     background-color: #f366b9;
 }
-.ice-type{
+#ice-type{
     background-color: #51c4e7;
 }
-.dragon-type{
+#dragon-type{
     background: linear-gradient(to bottom, #53a4cf 50%, #f16e57 50%);
 }
-.dark-type{
+#dark-type{
     background-color: #707070;
 }
-.fairy-type{
+#fairy-type{
     background-color: #fdb9e9;
 }
 
@@ -325,7 +326,7 @@ section{
 }
 
 .bkg-modal-pokemon{
-    position: absolute;
+    position: fixed;
     background-color: #00000063;
     width: 100vw;
     height: 100vh;
@@ -397,7 +398,7 @@ section{
     font-size: .8em;
 }
 
-.types-container div{
+.types-container p{
     margin-left: .8em;
     padding: .4em;
     border-radius: 5px;
@@ -508,6 +509,10 @@ section{
 
     .row-stats{
         width: 40px !important;
+    }
+
+    .modal-container{
+        width: 100% !important;
     }
 }
 

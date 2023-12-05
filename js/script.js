@@ -3,28 +3,28 @@ let totalPokemons = 1000
 
 let numOrganization = 0;
 
-function loadPokemon(){
-    if(document.getElementById("load-btn").textContent == "Voltar à Busca"){
+function loadPokemon() {
+    if (document.getElementById("load-btn").textContent == "Voltar à Busca") {
         totalCarregar = 12
         deletePokemons()
         document.getElementById("load-btn").innerHTML = "Carregar mais Pokémon"
         ordemCrescente(1, totalCarregar)
         return
     }
-    let totalAntes = totalCarregar+1
-    totalCarregar+=12;
-    if(numOrganization == 0){
+    let totalAntes = totalCarregar + 1
+    totalCarregar += 12;
+    if (numOrganization == 0) {
         ordemCrescente(totalAntes, totalCarregar)
-    }else if(numOrganization == 1){
-        ordemDecrescente(totalPokemons-totalAntes+1, totalCarregar)
+    } else if (numOrganization == 1) {
+        ordemDecrescente(totalPokemons - totalAntes + 1, totalCarregar)
     }
 }
 
-function openDropDown(){
+function openDropDown() {
 
     const DropDownContainer = document.getElementsByClassName("dropDown-menu")[0]
     const DropDownArrow = document.getElementById("arrow-dropDown")
-    if(DropDownArrow.className == "closed"){
+    if (DropDownArrow.className == "closed") {
         // arrow animation
         DropDownArrow.classList.remove("closed")
         DropDownArrow.classList.add("opened")
@@ -38,7 +38,7 @@ function openDropDown(){
     // arrow animation
     DropDownArrow.classList.remove("opened")
     DropDownArrow.classList.add("closed")
-    
+
     //open DropDown
 
     DropDownContainer.style.display = "none"
@@ -49,75 +49,81 @@ function openDropDown(){
 
 const opOrganization = document.getElementsByClassName("opOrganization")
 
-for(let i = 0; i < opOrganization.length; i++){
+for (let i = 0; i < opOrganization.length; i++) {
     opOrganization[i].addEventListener('click', changeOrganizationPokemons)
 }
 
-function changeOrganizationPokemons(event){
+function changeOrganizationPokemons(event) {
     // change name
     document.getElementsByClassName("dropDown-text-content")[0].innerHTML = event.target.textContent
 
     // organization logic
     deletePokemons()
     totalCarregar = 12
-    if(event.target == opOrganization[0]){
+    if (event.target == opOrganization[0]) {
         ordemCrescente(1, totalCarregar)
         numOrganization = 0
-    }else if(event.target == opOrganization[1]){
+    } else if (event.target == opOrganization[1]) {
         ordemDecrescente(totalPokemons, totalCarregar)
         numOrganization = 1
-    }else if(event.target == opOrganization[2]){
+    } else if (event.target == opOrganization[2]) {
 
-    }else if(event.target == opOrganization[3]){
+    } else if (event.target == opOrganization[3]) {
 
     }
 }
 
 const POKEMON_BASE_URL = "https://pokeapi.co/api/v2/pokemon/"
 
-async function ordemCrescente(inicio, fim){
-    for(let i = inicio; i <= fim; i++){
+async function ordemCrescente(inicio, fim) {
+    for (let i = inicio; i <= fim; i++) {
         const result = await getAPI(i)
     }
 }
 
-async function ordemDecrescente(inicio, fim){
-    for(let i = inicio; i > totalPokemons-fim; i--){
+async function ordemDecrescente(inicio, fim) {
+    for (let i = inicio; i > totalPokemons - fim; i--) {
         // deletePokemons(i)
         const result = await getAPI(i)
     }
 }
 
-async function getAPI(i){
-    await fetch(POKEMON_BASE_URL + `${i}`).then(async response =>{
-        return response.json().then(pokemon =>{
+async function getAPI(i) {
+    await fetch(POKEMON_BASE_URL + `${i}`).then(async response => {
+        return response.json().then(pokemon => {
 
             const name = pokemon.name
             const id = pokemon.id
             const img = pokemon.sprites.other["official-artwork"].front_default
-            
+
             let type1 = pokemon.types[0].type.name
-            
+
             let type2 = undefined
-            
-            if(pokemon.types[1] != undefined){
+
+            if (pokemon.types[1] != undefined) {
                 type2 = pokemon.types[1].type.name
             }
 
             showPokemons(name, id, img, type1, type2)
         })
     })
+
+    const cardsPokemon = document.getElementsByClassName("pokemon-card")
+
+    for (let i = 0; i < cardsPokemon.length; i++) {
+        cardsPokemon[i].addEventListener('click', openModal)
+    }
 }
 
-function deletePokemons(){
+function deletePokemons() {
     let Pai = document.getElementsByClassName("pokemons-results-container")[0]
 
-    while(Pai.firstChild){
+    while (Pai.firstChild) {
         Pai.removeChild(Pai.firstChild)
     }
 }
 
-function showPokemons(name, id, img, type1, type2){
+function showPokemons(name, id, img, type1, type2) {
 
     let DivContainer = document.createElement("div")
     DivContainer.classList.add("pokemon-card")
@@ -127,9 +133,9 @@ function showPokemons(name, id, img, type1, type2){
     DivContainer.classList.add("col-md-4")
     DivContainer.id = id
     document.getElementsByClassName("pokemons-results-container")[0].appendChild(DivContainer)
-    
+
     // 
-    
+
     let DivImgContainer = document.createElement("div")
     DivImgContainer.classList.add("img-pokemon")
     DivContainer.appendChild(DivImgContainer)
@@ -165,7 +171,7 @@ function showPokemons(name, id, img, type1, type2){
     DivDescContainer.appendChild(DivTypesContainer)
 
     let type1Container = document.createElement("div")
-    type1Container.classList.add(`${type1}-type`)
+    type1Container.id = `${type1}-type`
     type1Container.classList.add(`col-xl-6`)
     type1Container.classList.add(`col-sm-12`)
     type1Container.classList.add(`col-6`)
@@ -177,9 +183,9 @@ function showPokemons(name, id, img, type1, type2){
     type1Pokemon.classList.add("text-center")
     type1Container.appendChild(type1Pokemon)
 
-    if(type2 != undefined){
+    if (type2 != undefined) {
         let type2Container = document.createElement("div")
-        type2Container.classList.add(`${type2}-type`)
+        type2Container.id = `${type2}-type`
         type2Container.classList.add(`col`)
         DivTypesContainer.appendChild(type2Container)
 
@@ -192,14 +198,59 @@ function showPokemons(name, id, img, type1, type2){
 
 }
 
-async function searchPokemon(){
+async function searchPokemon() {
     deletePokemons()
     let input = document.getElementById("search-bar-input")
-    if(!isNaN(input.value)){
-        const result = await getAPI(input.value) 
+    if (!isNaN(input.value)) {
+        const result = await getAPI(input.value)
         document.getElementById("load-btn").innerHTML = "Voltar à Busca"
         return
-    }   
+    }
 }
 
-ordemCrescente(1, totalCarregar)
+
+
+
+
+function closeModal(modal) {
+    modal.classList.add("d-none")
+    document.querySelector("body").classList.remove("overflow-hidden")
+}
+
+async function openModal() {
+    document.querySelector("body").classList.add("overflow-hidden")
+    await fetch(POKEMON_BASE_URL + `${event.currentTarget.id}`).then(async response => {
+        return response.json().then(pokemon => {
+
+            document.getElementsByClassName("pokemon-name-modal")[0].innerHTML = pokemon.name
+            document.getElementsByClassName("pokemon-id-modal")[0].innerHTML = "#" + pokemon.id
+            document.getElementsByClassName("img-modal")[0].src = pokemon.sprites.other["official-artwork"].front_default
+            document.getElementsByClassName("ability-response")[0].innerHTML = pokemon.abilities[0].ability.name
+            document.getElementsByClassName("weight-response")[0].innerHTML = pokemon.weight + "lb"
+            document.getElementsByClassName("height-response")[0].innerHTML = pokemon.height + "m"
+
+            let type1 = pokemon.types[0].type.name
+
+            let type2 = undefined
+            document.getElementsByClassName("type2")[0].id = ``
+                document.getElementsByClassName("type2")[0].innerHTML = ""
+            if (pokemon.types[1] != undefined) {
+                type2 = pokemon.types[1].type.name
+                document.getElementsByClassName("type2")[0].id = `${type2}-type`
+                document.getElementsByClassName("type2")[0].innerHTML = type2
+            }
+
+            document.getElementsByClassName("type1")[0].id = `${type1}-type`
+            document.getElementsByClassName("type1")[0].innerHTML = type1
+
+
+
+        })
+    })
+
+    document.getElementsByClassName("bkg-modal-pokemon")[0].classList.remove("d-none")
+    document.getElementsByClassName("bkg-modal-pokemon")[0].classList.add("d-flex")
+
+
+
+}

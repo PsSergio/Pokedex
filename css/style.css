@@ -331,6 +331,7 @@ section{
     width: 100vw;
     height: 100vh;
     top: 0;
+    z-index: 801;
 }
 
 
@@ -487,6 +488,23 @@ section{
     border-bottom: 1px solid black;
 }
 
+.side-button-container{
+    position: relative;
+}
+
+.side-btn{
+    position: fixed;
+    z-index: 800;
+    padding: 1em;
+    border-radius: 5px;
+    border: 1px solid black;
+    background-color: #f0f0f0;
+}
+
+.side-btn img{
+    width: 4em;
+}
+
 @media (max-width: 1400px){
     .pokemon-type :first-child{
         margin-bottom: 0;
@@ -570,6 +588,10 @@ section{
 
     .left-side-pokemon-lista img{
         margin-right: 0;
+    }
+
+    .side-btn img{
+        width: 3em;
     }
 }
 

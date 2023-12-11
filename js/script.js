@@ -317,7 +317,7 @@ function criaPokemonLista(imgSRC, name, id) {
 
 }
 
-async function getPokemonLista(i){
+async function getPokemonLista(i) {
 
     await fetch(POKEMON_BASE_URL + `${i}`).then(async response => {
         return response.json().then(pokemon => {
@@ -333,11 +333,32 @@ async function getPokemonLista(i){
 
 }
 
-function abrirLista(){
+function abrirLista() {
 
     document.querySelector("body").classList.add("overflow-hidden")
     closeModal(document.getElementsByClassName('bkg-modal-pokemon')[0])
     document.getElementsByClassName("bkg-modal-lista")[0].classList.remove("d-none")
     document.getElementsByClassName("bkg-modal-lista")[0].classList.add("d-flex")
+
+    const TrashIcon = document.getElementsByClassName("pokemon-lista-icon-trash")
+
+    for (let i = 0; i < TrashIcon.length; i++) {
+
+        TrashIcon[i].addEventListener("click", (event) => {
+
+            let container = event.currentTarget.parentNode
+
+            if(container.className != 'pokemon-row'){
+                container = container.parentNode
+            }else{
+                container = event.currentTarget.parentNode
+            }
+
+            listaCapturados.splice(listaCapturados.indexOf(container.id), 1)
+            container.remove()
+
+        })
+
+    }
 
 }

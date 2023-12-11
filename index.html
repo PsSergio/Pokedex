@@ -31,6 +31,13 @@
             </div>
         </div>
     </header>
+    <section class="container d-flex justify-content-start flex-row">
+        <div class="side-button-container">
+            <button class="side-btn" onclick="abrirLista()">
+                <img src="https://cdn-icons-png.flaticon.com/512/188/188918.png" alt="" class="pokebola-icon-side-btn">
+            </button>
+        </div>
+    </section>
     <section class="container">
         <div class="bkg-sub-container">
             <div class="white-sub-container d-flex row align-items-center justify-content-center">
@@ -84,7 +91,10 @@
                     <button id="load-btn" onclick="loadPokemon()">Carregar mais Pokémon</button>
                 </div>
             </div>
+            
+            
         </div>
+        
         <div class="bkg-modal-pokemon d-none flex-column justify-content-center">
             <div class="modal-container container d-flex flex-column align-items-center">
                 <div class="close-icon-container" onclick="closeModal(document.getElementsByClassName('bkg-modal-pokemon')[0])">
@@ -134,7 +144,7 @@
             </div>
 
         </div>
-        <div class="bkg-modal-lista d-flex flex-column justify-content-center">
+        <div class="bkg-modal-lista d-none flex-column justify-content-center">
             <div class="modal-lista modal-container container d-flex flex-column align-items-center">
                 <div class="close-icon-container" onclick="closeModal(document.getElementsByClassName('bkg-modal-lista')[0])">
                     <img src="img/close-icon.png" alt="">

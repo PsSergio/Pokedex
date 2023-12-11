@@ -335,6 +335,8 @@ async function getPokemonLista(i) {
 
 function abrirLista() {
 
+    avisoListaVazia()
+
     document.querySelector("body").classList.add("overflow-hidden")
     closeModal(document.getElementsByClassName('bkg-modal-pokemon')[0])
     document.getElementsByClassName("bkg-modal-lista")[0].classList.remove("d-none")
@@ -346,18 +348,38 @@ function abrirLista() {
 
         TrashIcon[i].addEventListener("click", (event) => {
 
-            let container = event.currentTarget.parentNode
+            let container
+            if(i%2 != 0){
+                // console.log("pc")
+                container = event.currentTarget.parentNode.parentNode
 
-            if(container.className != 'pokemon-row'){
-                container = container.parentNode
             }else{
-                container = event.currentTarget.parentNode
+                // console.log("mobile")
+                container = event.currentTarget.parentNode.parentNode.parentNode
+
             }
+
+            // console.log(container)
 
             listaCapturados.splice(listaCapturados.indexOf(container.id), 1)
             container.remove()
 
+            avisoListaVazia()
+
         })
+
+    }
+
+}
+
+function avisoListaVazia(){
+
+    if(listaCapturados.length == 0){
+
+        document.getElementsByClassName("lista-empty-aviso")[0].style.display = 'block'
+
+    }else{
+        document.getElementsByClassName("lista-empty-aviso")[0].style.display = 'none'
 
     }
 

@@ -505,6 +505,10 @@ section{
     width: 4em;
 }
 
+.lista-empty-aviso{
+    display: block;
+}
+
 @media (max-width: 1400px){
     .pokemon-type :first-child{
         margin-bottom: 0;

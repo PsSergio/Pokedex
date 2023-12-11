@@ -217,6 +217,8 @@ function closeModal(modal) {
     document.querySelector("body").classList.remove("overflow-hidden")
 }
 
+let idPokemonAtivado
+
 async function openModal() {
     document.querySelector("body").classList.add("overflow-hidden")
     await fetch(POKEMON_BASE_URL + `${event.currentTarget.id}`).then(async response => {
@@ -224,6 +226,7 @@ async function openModal() {
 
             document.getElementsByClassName("pokemon-name-modal")[0].innerHTML = pokemon.name
             document.getElementsByClassName("pokemon-id-modal")[0].innerHTML = "#" + pokemon.id
+            idPokemonAtivado = pokemon.id
             document.getElementsByClassName("img-modal")[0].src = pokemon.sprites.other["official-artwork"].front_default
             document.getElementsByClassName("ability-response")[0].innerHTML = pokemon.abilities[0].ability.name
             document.getElementsByClassName("weight-response")[0].innerHTML = pokemon.weight + "lb"
@@ -233,7 +236,7 @@ async function openModal() {
 
             let type2 = undefined
             document.getElementsByClassName("type2")[0].id = ``
-                document.getElementsByClassName("type2")[0].innerHTML = ""
+            document.getElementsByClassName("type2")[0].innerHTML = ""
             if (pokemon.types[1] != undefined) {
                 type2 = pokemon.types[1].type.name
                 document.getElementsByClassName("type2")[0].id = `${type2}-type`
@@ -247,10 +250,38 @@ async function openModal() {
 
         })
     })
-
+    document.getElementsByClassName("aviso-pokemon-adicionado")[0].style.display = 'none'
     document.getElementsByClassName("bkg-modal-pokemon")[0].classList.remove("d-none")
     document.getElementsByClassName("bkg-modal-pokemon")[0].classList.add("d-flex")
 
+
+
+}
+
+function verificaPokemonExiste() {
+
+    for (let j = 0; j < 6; j++) {
+        if (listaCapturados[j] == idPokemonAtivado) {
+            return true
+        }
+    }
+    return false
+
+}
+
+let listaCapturados = []
+
+function addPokemonList() {
+    if (!verificaPokemonExiste() && listaCapturados.length < 6) {
+        listaCapturados.push(idPokemonAtivado)
+        document.getElementsByClassName("aviso-pokemon-adicionado")[0].innerHTML = 'Pokémon adicionado! <b onclick="abrirLista()">Clique aqui para ver a lista.</b>'
+
+    } else {
+        document.getElementsByClassName("aviso-pokemon-adicionado")[0].innerHTML = 'O Pokémon já foi adicionado ou a lista está cheia!'
+    }
+    console.log(listaCapturados)
+
+    document.getElementsByClassName("aviso-pokemon-adicionado")[0].style.display = 'block'
 
 
 }

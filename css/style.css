@@ -325,13 +325,15 @@ section{
     padding: 1em 2em;
 }
 
-.bkg-modal-pokemon{
+.bkg-modal-pokemon, .bkg-modal-lista{
     position: fixed;
     background-color: #00000063;
     width: 100vw;
     height: 100vh;
     top: 0;
 }
+
+
 
 .modal-container{
     background-color: white;
@@ -437,6 +439,44 @@ section{
 
 .pokemon-ilustration-modal img{
     width: 90%;
+}
+
+.add-pokemon-btn{
+
+    font-size: .8em;
+    padding: .5em 1em;
+    border: none;
+    background-color: #30a7d7;
+    color: white;
+    border-radius: 5px;
+
+}
+
+.aviso-pokemon-adicionado{
+    font-size: .7em;
+    color: black;
+    display: none;
+}
+
+.aviso-pokemon-adicionado b{
+    text-decoration: underline;
+
+}
+
+.pokemon-lista-img{
+    width: 7em;
+}
+
+.pokemon-lista-icon-trash{
+    width: 2em;
+}
+
+.left-side-pokemon-lista p{
+    margin-left: 2em;
+}
+
+.pokemon-row{
+    width: 100%;
 }
 
 @media (max-width: 1400px){

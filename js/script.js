@@ -206,6 +206,7 @@ async function searchPokemon() {
         document.getElementById("load-btn").innerHTML = "Voltar à Busca"
         return
     }
+    document.getElementById("load-btn").innerHTML = "Voltar à Busca"
 }
 
 

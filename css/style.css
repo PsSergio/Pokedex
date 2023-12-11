@@ -472,11 +472,19 @@ section{
 }
 
 .left-side-pokemon-lista p{
-    margin-left: 2em;
+    margin-right: 2em;
 }
 
 .pokemon-row{
     width: 100%;
+}
+
+.left-side-pokemon-lista img{
+    margin-right: 2em;
+}
+
+.pokemon-row{
+    border-bottom: 1px solid black;
 }
 
 @media (max-width: 1400px){
@@ -553,6 +561,15 @@ section{
 
     .modal-container{
         width: 100% !important;
+    }
+
+    .left-side-pokemon-lista .pokemon-lista-img{
+        margin-right: 0;
+        width: 90%;
+    }
+
+    .left-side-pokemon-lista img{
+        margin-right: 0;
     }
 }
 

@@ -274,6 +274,7 @@ let listaCapturados = []
 function addPokemonList() {
     if (!verificaPokemonExiste() && listaCapturados.length < 6) {
         listaCapturados.push(idPokemonAtivado)
+        getPokemonLista(idPokemonAtivado)
         document.getElementsByClassName("aviso-pokemon-adicionado")[0].innerHTML = 'Pokémon adicionado! <b onclick="abrirLista()">Clique aqui para ver a lista.</b>'
 
     } else {
@@ -283,5 +284,60 @@ function addPokemonList() {
 
     document.getElementsByClassName("aviso-pokemon-adicionado")[0].style.display = 'block'
 
+
+}
+
+function criaPokemonLista(imgSRC, name, id) {
+
+    const rowPokemon = document.createElement("div")
+    rowPokemon.classList.add("pokemon-row")
+    rowPokemon.classList.add("d-flex")
+    rowPokemon.classList.add("align-items-center")
+    rowPokemon.classList.add("justify-content-sm-between")
+    rowPokemon.classList.add("justify-content-center")
+    rowPokemon.id = id
+
+    rowPokemon.innerHTML =
+        `
+    <div class="left-side-pokemon-lista d-flex flex-column flex-sm-row align-items-center">
+    <img src="${imgSRC}" alt="" class="pokemon-lista-img img-fluid">
+    <div class="desc-pokemon-lista d-flex">
+        <p class="pokemon-lista-name mb-sm-0 mb-4">${name}</p>
+        <p class="pokemon-lista-id mb-sm-0 mb-4">#${id}</p>
+        <img src="https://cdn-icons-png.flaticon.com/512/542/542724.png" alt="" class="pokemon-lista-icon-trash img-fluid d-block d-sm-none mb-4">
+    </div>
+</div>
+<div class="right-side-pokemon-lista">
+    <img src="https://cdn-icons-png.flaticon.com/512/542/542724.png" alt="" class="pokemon-lista-icon-trash img-fluid d-sm-block d-none">
+</div>
+    `
+
+    document.getElementsByClassName("pokemons-lista-container")[0].appendChild(rowPokemon)
+
+
+}
+
+async function getPokemonLista(i){
+
+    await fetch(POKEMON_BASE_URL + `${i}`).then(async response => {
+        return response.json().then(pokemon => {
+
+            const name = pokemon.name
+            const id = pokemon.id
+            const imgSRC = pokemon.sprites.other["official-artwork"].front_default
+
+            criaPokemonLista(imgSRC, name, id)
+
+        })
+    })
+
+}
+
+function abrirLista(){
+
+    document.querySelector("body").classList.add("overflow-hidden")
+    closeModal(document.getElementsByClassName('bkg-modal-pokemon')[0])
+    document.getElementsByClassName("bkg-modal-lista")[0].classList.remove("d-none")
+    document.getElementsByClassName("bkg-modal-lista")[0].classList.add("d-flex")
 
 }
